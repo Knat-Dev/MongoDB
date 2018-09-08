@@ -22,7 +22,7 @@ MongoClient.connect('mongodb://localhost:27017/TodosApp',(err, db)=>{
     // db.collection('Todos').findOneAndDelete({text: 'Walk the dog'}).then((result) =>{
     //    console.log(result);
     // });
-    
+
 
     db.close();
 });
