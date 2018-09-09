@@ -27,9 +27,7 @@ User.findById(id).then((user) => {
     console.log(e);
 });
 
-// Todo.findById({
-//     _id: id
-// }).then((todo) => {
+// Todo.findById(id).then((todo) => {
 //     console.log('TodoById: ',JSON.stringify(todo,undefined,2));
 // }).catch((e) =>{
 //     console.log(e);

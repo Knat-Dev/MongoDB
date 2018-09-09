@@ -1,6 +1,13 @@
 {
   "name": "Rest Api",
   "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": "9.2.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
