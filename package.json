@@ -1,12 +1,14 @@
 {
   "name": "rest-api-todos",
   "version": "0.0.1",
-  "description": "",
+  "description": "Todo List",
+  "repository": {},
+  "license": "(ISC OR GPL-3.0)",
   "scripts": {
     "start": "node server/server.js"
   },
   "engines": {
-    "node": "9.2.0"
+    "node": "8.x.x"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
