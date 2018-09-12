@@ -3,6 +3,7 @@ const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
+const {SHA256} = require('crypto-js');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
@@ -13,9 +14,11 @@ var port = process.env.PORT || 3000;
 
 
 
-
 app.use(bodyParser.json());
 
+
+
+//Todos
 app.post('/todos',(request,response) => {
     var todo = new Todo({
         text: request.body.text
@@ -121,6 +124,27 @@ app.patch('/todos/:id', (req,res) => {
         res.status(400).send();
     })
 });
+
+//Users
+app.post('/users', (req,res) => {
+    var body = _.pick(req.body,['email','password']);
+    var user = new User({
+        email: body.email,
+        password: SHA256(body.password).toString()
+    });
+
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token) => {
+        return res.header('x-auth',token).send(user);
+    })
+        .catch((e) => {
+        res.status(400).send(e);
+    })
+});
+
+
+
 
 app.listen(port, () => {
     console.log(`Started up on port ${port}`);
